@@ -33,6 +33,7 @@
 
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
+  html{ touch-action:manipulation; }   /* keep scroll + pinch-zoom, drop double-tap-to-zoom */
   body{
     font-family:var(--ui);
     background:var(--page);
@@ -420,7 +421,7 @@
   .undo-fab:active{ transform:scale(.92); }
   .undo-fab:disabled{ opacity:.35; cursor:default; box-shadow:0 2px 8px rgba(10,20,90,.12); }
   .undo-fab:focus-visible{ outline:3px solid var(--pbs-blue); outline-offset:2px; }
-  .wgrid{ display:flex; flex-direction:column; gap:6px; align-items:center; margin-bottom:16px; }
+  .wgrid{ display:flex; flex-direction:column; gap:6px; align-items:center; margin-bottom:16px; user-select:none; -webkit-user-select:none; }
   .wrow{ display:flex; gap:6px; }
   /* active (top) attempt — subtle cue that input lands here */
   .wrow.active .wcell{ border-style:dashed; }
@@ -451,6 +452,8 @@
     min-width:28px; height:46px; padding:0 6px; border:none; border-radius:5px;
     background:#E7E9F4; color:var(--navy); font-family:var(--ui); font-weight:700; font-size:.85rem;
     cursor:pointer; text-transform:uppercase; transition:background .15s ease, transform .08s ease;
+    touch-action:manipulation;            /* no double-tap-to-zoom on rapid key taps */
+    user-select:none; -webkit-user-select:none; -webkit-touch-callout:none;
   }
   .wkey:active{ transform:translateY(1px); }
   .wkey.wide{ min-width:48px; font-size:.68rem; }
